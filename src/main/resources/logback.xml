@@ -1,0 +1,29 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <!-- encoders are assigned the type
+                 ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <shortenedLoggerNameLength>36</shortenedLoggerNameLength>
+            <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                <maxDepthPerThrowable>30</maxDepthPerThrowable>
+                <maxLength>2048</maxLength>
+                <shortenedClassNameLength>20</shortenedClassNameLength>
+                <exclude>sun\.reflect\..*\.invoke.*</exclude>
+                <exclude>net\.sf\.cglib\.proxy\.MethodProxy\.invoke</exclude>
+                <rootCauseFirst>true</rootCauseFirst>
+                <inlineHash>true</inlineHash>
+            </throwableConverter>
+            <includeContext>false</includeContext>
+            <fieldNames class="net.logstash.logback.fieldnames.ShortenedFieldNames"/>
+            <fieldNames>
+                <timestamp>timestamp</timestamp>
+                <version>[ignore]</version>
+                <levelValue>[ignore]</levelValue>
+            </fieldNames>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

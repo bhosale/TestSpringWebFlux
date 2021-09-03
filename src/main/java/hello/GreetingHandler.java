@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class GreetingHandler {
     public Mono<ServerResponse> hello(ServerRequest request) {
-        log.info("Handling Greeting Request");
+        log.info("Handling Greeting Request avinash@example.com");
         try {
             throw new Exception("Test");
         } catch (Exception ex) {

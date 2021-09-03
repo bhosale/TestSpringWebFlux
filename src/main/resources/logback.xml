@@ -3,6 +3,9 @@
             <!-- encoders are assigned the type
                  ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <jsonGeneratorDecorator class="net.logstash.logback.mask.MaskingJsonGeneratorDecorator">
+                <valueMasker class="hello.logging.RegexFindValueMasker"/>
+            </jsonGeneratorDecorator>
             <shortenedLoggerNameLength>36</shortenedLoggerNameLength>
             <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
                 <maxDepthPerThrowable>30</maxDepthPerThrowable>
